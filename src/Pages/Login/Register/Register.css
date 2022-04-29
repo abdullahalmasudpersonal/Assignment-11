@@ -5,7 +5,22 @@
     height: 600px;
     width: 350px;
     margin: auto;
-    border: 1px solid purple;
+    border: 1px solid rgb(255, 204, 146);
     border-radius: 5px;
     text-align: center;
+    background-color: #ffcfb3;
+}
+.fwbold{
+    color: rgb(82, 0, 0);
+    font-weight: 600;
+}
+.register img{
+    border-radius: 5px 5px 0 0;
+}
+.register-input{
+    width: 250px;
+    height: 40px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid gray;
 }

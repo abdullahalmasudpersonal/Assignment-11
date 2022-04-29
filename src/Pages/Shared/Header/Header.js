@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../../../node_modules/bootstrap/dist/js/bootstrap.min';
 import './Header.css';
+import logo from '../../../image/warehouse-logo.png';
 
 const Header = () => {
     return (
@@ -11,7 +12,7 @@ const Header = () => {
             <Navbar collapseOnSelect expand="lg" sticky='top' className='bg-color' variant="light">
                 <Container  >
                     <Navbar.Brand as={Link} to="/">
-                        {/* <img height={80} width={140} src={logo} alt='' /> */}
+                        <img height={30} width={60} src={logo} alt='' />
                     </Navbar.Brand> 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
