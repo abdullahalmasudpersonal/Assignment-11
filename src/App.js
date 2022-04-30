@@ -10,7 +10,6 @@ import Blogs from './Pages/Blogs/Blogs';
 import Home from './Pages/Home/Home/Home';
 import Inventories from './Pages/Shared/Inventories/Inventories';
 import UpdateInventory from './Pages/UpdateInventory/UpdateInventory';
-import CheckOut from './Pages/CheckOut/CheckOut';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 
 function App() {
@@ -24,12 +23,6 @@ function App() {
         <Route path='/inventories/:inventoriesId' element={
           <RequireAuth>
             <UpdateInventory />
-          </RequireAuth>
-        }></Route>
-
-        <Route path='/checkout' element={
-          <RequireAuth>
-            <CheckOut />
           </RequireAuth>
         }></Route>
         <Route path='/blogs' element={<Blogs />}></Route>

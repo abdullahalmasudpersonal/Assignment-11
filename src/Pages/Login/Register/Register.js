@@ -1,37 +1,43 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './Register.css';
 import logoimg from '../../../image/img.png';
 import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 
 
 const Register = () => {
-const [agree, setAgree] = useState(false); 
+    const [agree, setAgree] = useState(false);
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
-    
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, UpdateError] = useUpdateProfile(auth);
     const navigate = useNavigate();
 
-    const handleRegister = event => {
+    const handleRegister = async (event) => {
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-      //  const agree = event.target.terms.checked;
-        if(agree){
-            createUserWithEmailAndPassword(email, password);
-        }
+        //  const agree = event.target.terms.checked;
 
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+        console.log('updated profile');
+        navigate('/home');
+    }
+
+    if(loading || updating ){
+        return <Loading/>
     }
 
     if (user) {
-        navigate('/home');
+       console.log('user', user);
     }
 
 
@@ -51,12 +57,12 @@ const [agree, setAgree] = useState(false);
                     <input className='register-input mb-2 ' type='password' placeholder='Enter password' name='password' id='' required />
 
                     <div className='mb-2 mt-0'>
-                        <input onClick={()=>setAgree(!agree)}
+                        <input onClick={() => setAgree(!agree)}
                             type='checkbox' name='terms' id='terms'></input>
-                        <label htmlFor='terms' className={`ps-2 ${agree ? 'text-primary':'text-danger'}`}>
+                        <label htmlFor='terms' className={`ps-2 ${agree ? 'text-primary' : 'text-danger'}`}>
                             Accept terms and conditions
                         </label>
-                    </div> 
+                    </div>
 
                     <input disabled={!agree} className='register-input' type='submit' value='Register' />
                 </form>

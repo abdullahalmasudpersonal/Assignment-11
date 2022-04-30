@@ -5,6 +5,9 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import Loading from '../../Shared/Loading/Loading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -25,14 +28,18 @@ const Login = () => {
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
+    if (loading || sending) {
+        return <Loading />
+    }
+
     if (user) {
         navigate(from, { replace: true });
     }
 
     if (error) {
-        errorElement = 
+        errorElement =
             <p className='text-danger'>{error?.message} </p>
-       
+
     }
 
 
@@ -44,10 +51,15 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
     }
 
-    const resetPassword = async() =>{
+    const resetPassword = async () => {
         const email = emailRef.current.value;
-        await sendPasswordResetEmail(email);
-        alert('send email');
+        if(email){
+            await sendPasswordResetEmail(email);
+        toast('send email');
+        }
+        else{
+            toast('Please enter your email address')
+        }
     }
 
 
@@ -78,9 +90,9 @@ const Login = () => {
                         <p className='mx-1'>or</p>
                         <hr className='w-25' />
                     </div>
-                    
-                    <SocialLogin />
 
+                    <SocialLogin />
+                    <ToastContainer />
                     <div className='new-user'>
                         <p style={{ textAlign: 'center' }}>New to Computer Warehouse? <span>
                             <Link style={{ textDecoration: 'none' }} to='/register' >Register</Link></span></p>
