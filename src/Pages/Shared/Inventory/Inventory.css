@@ -1,0 +1,27 @@
+
+.inventory{
+    width: 300px;
+    height: 460px;
+    margin: auto;
+    /* border: 1px solid gray; */
+    position: relative;
+}
+.inventory img{
+    border-radius: 3px;
+}
+.brandname{
+    color: rgb(57, 14, 114);
+    font-weight: 600;
+}
+.cartbtn{
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(255, 209, 150);
+}
+.cartbtn:hover{
+    background-color: rgb(255, 186, 97);
+}

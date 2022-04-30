@@ -1,28 +1,33 @@
 import React from 'react';
 import './Register.css';
 import logoimg from '../../../image/img.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
-// import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-// import auth from '../../../firebase.init';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 
 const Register = () => {
 
-    // const [
-    //     createUserWithEmailAndPassword,
-    //     user,
-    //     loading,
-    //     error,
-    //   ] = useCreateUserWithEmailAndPassword(auth);
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const navigate = useNavigate();
 
-    const handleRegister = event =>{
+    const handleRegister = event => {
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-        console.log( name, email, password)
 
+        createUserWithEmailAndPassword(email, password);
+    }
+
+    if (user) {
+        navigate('/home');
     }
 
 
@@ -41,7 +46,7 @@ const Register = () => {
                     <input className='register-input' type='email' placeholder='Enter email' name='email' id='' required />
                     <input className='register-input mb-2 ' type='password' placeholder='Enter password' name='password' id='' required />
 
-                   {/*  <div className='mb-2 mt-0'>
+                    {/*  <div className='mb-2 mt-0'>
                         <input
                             type='checkbox' name='terms' id='terms'></input>
                         <label className='text-danger'>
