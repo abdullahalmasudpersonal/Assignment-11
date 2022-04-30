@@ -20,7 +20,7 @@ const Home = () => {
         <div>
             <Banner />
             <hr className='w-50 inventory-hr mx-auto mt-5' />
-            <h2 className='inventory-heading mt-2 align-items-center d-flex justify-content-center mb-0'>Inventory (<strong>
+            <h2 className='inventory-heading mt-2 align-items-center d-flex justify-content-center mb-0'>Inventories (<strong>
                 {inventories.length} </strong>) </h2>
             <hr className='w-50 inventory-hr mx-auto mt-3' />
 

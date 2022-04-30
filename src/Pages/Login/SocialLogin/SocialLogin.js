@@ -3,15 +3,39 @@ import google from '../../../image/SocialLogin/google-logo3.png';
 import facebook from '../../../image/SocialLogin/facebook.png';
 import github from '../../../image/SocialLogin/github-icon.png';
 import './SocialLogin.css';
+import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const SocialLogin = () => {
+    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
+    const navigate = useNavigate();
+    
+    let errorElement;
+    if (error || error1) {
+        errorElement =
+            <p className='text-danger'>{error?.message} {error1?.message}</p>
+        
+    }
+
+    if (user || user1) {
+        navigate('/');
+    }
+
+
+
     return (
-        <div className='sociallogin'>
-            <img src={facebook} height='40px' width='40px' alt='' />
-            <img src={google} height='40px' width='40px' alt='' />
-            <img src={github} height='40px' width='40px' alt='' />
+
+        <div>
+            {errorElement}
+            <div className='sociallogin'>
+                <img src={facebook} height='40px' width='40px' alt='' />
+                <img onClick={() => signInWithGoogle()} src={google} height='40px' width='40px' alt='' />
+                <img onClick={() => signInWithGithub()} src={github} height='40px' width='40px' alt='' />
+            </div>
         </div>
     );
 };

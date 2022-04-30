@@ -4,7 +4,7 @@ import logoimg from '../../../image/img.png';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 const Login = () => {
 
@@ -14,17 +14,27 @@ const Login = () => {
     const location = useLocation();
 
     let from = location.state?.from?.pathname || '/';
+    let errorElement;
 
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useSignInWithEmailAndPassword(auth);
+    ] = useSignInWithEmailAndPassword(auth);
 
-      if(user){
-          navigate(from, {replace: true});
-      }
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+    if (user) {
+        navigate(from, { replace: true });
+    }
+
+    if (error) {
+        errorElement = 
+            <p className='text-danger'>{error?.message} </p>
+       
+    }
+
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -32,6 +42,12 @@ const Login = () => {
         const password = passwrodRef.current.value;
 
         signInWithEmailAndPassword(email, password);
+    }
+
+    const resetPassword = async() =>{
+        const email = emailRef.current.value;
+        await sendPasswordResetEmail(email);
+        alert('send email');
     }
 
 
@@ -53,15 +69,16 @@ const Login = () => {
 
                         <input className='register-input mt-2' type='submit' value='Login' />
                     </form>
+                    {errorElement}
 
-                    <p className='forgot-pass btn p-0 mb-1'>Forgot Password</p>
+                    <p onClick={resetPassword} className='forgot-pass btn p-0 mb-1'>Forgot Password</p>
 
                     <div className=' mx d-flex m-0 justify-content-center'>
                         <hr className='w-25' />
                         <p className='mx-1'>or</p>
                         <hr className='w-25' />
                     </div>
-
+                    
                     <SocialLogin />
 
                     <div className='new-user'>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './Register.css';
 import logoimg from '../../../image/img.png';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,13 +8,14 @@ import auth from '../../../firebase.init';
 
 
 const Register = () => {
-
+const [agree, setAgree] = useState(false); 
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+    
     const navigate = useNavigate();
 
     const handleRegister = event => {
@@ -22,8 +23,11 @@ const Register = () => {
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
+      //  const agree = event.target.terms.checked;
+        if(agree){
+            createUserWithEmailAndPassword(email, password);
+        }
 
-        createUserWithEmailAndPassword(email, password);
     }
 
     if (user) {
@@ -46,15 +50,15 @@ const Register = () => {
                     <input className='register-input' type='email' placeholder='Enter email' name='email' id='' required />
                     <input className='register-input mb-2 ' type='password' placeholder='Enter password' name='password' id='' required />
 
-                    {/*  <div className='mb-2 mt-0'>
-                        <input
+                    <div className='mb-2 mt-0'>
+                        <input onClick={()=>setAgree(!agree)}
                             type='checkbox' name='terms' id='terms'></input>
-                        <label className='text-danger'>
+                        <label htmlFor='terms' className={`ps-2 ${agree ? 'text-primary':'text-danger'}`}>
                             Accept terms and conditions
                         </label>
-                    </div> */}
+                    </div> 
 
-                    <input className='register-input' type='submit' value='Register' />
+                    <input disabled={!agree} className='register-input' type='submit' value='Register' />
                 </form>
 
 
