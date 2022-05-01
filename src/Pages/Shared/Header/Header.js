@@ -12,7 +12,7 @@ import { signOut } from 'firebase/auth';
 const Header = () => {
     const [user] = useAuthState(auth);
 
-    const handleSignOut = () =>{
+    const handleSignOut = () => {
         signOut(auth);
     }
 
@@ -22,7 +22,7 @@ const Header = () => {
                 <Container  >
                     <Navbar.Brand as={Link} to="/">
                         <img height={30} width={60} src={logo} alt='' />
-                    </Navbar.Brand> 
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
@@ -34,13 +34,19 @@ const Header = () => {
                             <Nav.Link as={Link} to="/about">ABOUT</Nav.Link>
                         </Nav>
                         <Nav>
+                            {
+                                user && <>
+                                    <Nav.Link as={Link} to="/additem">ADD ITEM</Nav.Link>
+                                    <Nav.Link as={Link} to="/manageinventories">MANAGE ITEM</Nav.Link>
+                                </>
+                            }
                             <Nav.Link as={Link} to="/register">REGISTER</Nav.Link>
                             {
                                 user ?
                                     <button className='signout-btn' onClick={handleSignOut} >SIGN OUT</button>
                                     :
                                     <Nav.Link as={Link} to="/login">LOGIN</Nav.Link>
-                            } 
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
