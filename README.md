@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Computer Warehouse
+
+#### This project is live link [Fstoppers](https://computer-warehouse-5a411.firebaseapp.com)
+
+#### This project is live link 2 [Fstoppers](https://computer-warehouse-5a411.web.app)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

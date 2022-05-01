@@ -9,7 +9,7 @@ const Inventories = () => {
         fetch('http://localhost:5000/inventories')
             .then(res => res.json())
             .then(data => setInventories(data));
-    });
+    }, []);
     return (
         <div className='container inventories py-5'>
             {
