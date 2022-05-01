@@ -4,7 +4,8 @@
 
 #### This project is live link 2 [Computer Warehouse](https://computer-warehouse-5a411.web.app)
 
-###`Description` This is an computer (Laptop) warehouse website. Laptop computers are stored here. From here laptops are supplied to different parts of the country. Only wholesale is sold at a small profit. 
+### `Description:` 
+This is an computer (Laptop) warehouse website. Laptop computers are stored here. From here laptops are supplied to different parts of the country. Only wholesale is sold at a small profit. 
 
 ### Use Navber
 - HOME

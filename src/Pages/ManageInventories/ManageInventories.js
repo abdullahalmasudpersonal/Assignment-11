@@ -2,7 +2,7 @@ import React from 'react';
 import useInventories from '../../hooks/useInventories';
 
 const ManageInventories = () => {
-    const [inventories] = useInventories();
+    const [inventories, setInventories] = useInventories();
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
@@ -15,6 +15,8 @@ const ManageInventories = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                const remaining = inventories.filter(inventory => inventory._id !== id)
+                setInventories(remaining);
             })
         }
     }
