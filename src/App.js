@@ -12,7 +12,6 @@ import Inventories from './Pages/Shared/Inventories/Inventories';
 import UpdateInventory from './Pages/UpdateInventory/UpdateInventory';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import AddItem from './Pages/AddItem/AddItem';
-import ManageInventories from './ManageInventories/ManageInventories';
 
 function App() {
   return (
@@ -30,11 +29,6 @@ function App() {
         <Route path='/additem' element={
           <RequireAuth>
             <AddItem/>
-          </RequireAuth>
-        }></Route>
-        <Route path='/manageinventories' element={
-          <RequireAuth>
-            <ManageInventories/>
           </RequireAuth>
         }></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
