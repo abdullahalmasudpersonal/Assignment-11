@@ -20,6 +20,7 @@ const UpdateInventory = () => {
             <h3 className='brandname'>{inventories.name}</h3>
             <h6>Price: ${inventories.price}</h6>
             <p className='mb-1'>quantity: {inventories.quantity}</p>
+            <p className='mb-1 fw-bold'> Id: {inventoriesId}</p>
             <strong>
                 <p className='mb-1'>Seller: {inventories.seller}</p>
             </strong>
