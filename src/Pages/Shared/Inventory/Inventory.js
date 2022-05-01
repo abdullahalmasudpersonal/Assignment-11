@@ -16,7 +16,7 @@ const Inventory = ({ inventory }) => {
             <div className='px-3'>
                 <h3 className='brandname'>{name}</h3>
                 <h6>Price: ${price}</h6>
-                <p className='mb-1'>quantity: {quantity}</p>
+                <p className='mb-1'>Quantity: {quantity}</p>
                 <strong>
                     <p className='mb-1'>Seller: {seller}</p>
                 </strong>
