@@ -14,6 +14,8 @@ import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import AddItem from './Pages/AddItem/AddItem';
 import ManageInventories from './Pages/ManageInventories/ManageInventories';
 import CheckOut from './Pages/CheckOut/CheckOut';
+import { ToastContainer } from 'react-toastify';
+import MyItems from './Pages/MyItems/MyItems';
 
 function App() {
   return (
@@ -38,6 +40,11 @@ function App() {
             <ManageInventories/>
           </RequireAuth>
         }></Route>
+        <Route path='/myitems' element={
+          <RequireAuth>
+            <MyItems/>
+          </RequireAuth>
+        }></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/checkout/:inventoriesId' element={<CheckOut/>}></Route>
         <Route path='/register' element={<Register />}></Route>
@@ -45,6 +52,7 @@ function App() {
         <Route path='/*' element={<Notfound />}></Route>
       </Routes>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Loading from '../../Shared/Loading/Loading';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
@@ -92,7 +92,7 @@ const Login = () => {
                     </div>
 
                     <SocialLogin />
-                    <ToastContainer />
+                    
                     <div className='new-user'>
                         <p style={{ textAlign: 'center' }}>New to Computer Warehouse? <span>
                             <Link style={{ textDecoration: 'none' }} to='/register' >Register</Link></span></p>
