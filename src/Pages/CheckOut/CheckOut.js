@@ -4,6 +4,7 @@ import useInventoriesDetail from '../../hooks/UseInventoriesDetail';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import './CheckOut.css';
+import axios from 'axios';
 
 const CheckOut = () => {
     const { inventoriesId } = useParams();
@@ -19,6 +20,10 @@ const CheckOut = () => {
             address: event.target.address.value,
             phone: event.target.phone.value
         }
+        axios.post('',order)
+        .then(response =>{
+            console.log(response)
+        })
     }
     return (
         <div className='w-50 mx-auto checkout mt-5'>
