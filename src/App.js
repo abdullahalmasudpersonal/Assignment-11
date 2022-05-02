@@ -13,6 +13,7 @@ import UpdateInventory from './Pages/UpdateInventory/UpdateInventory';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import AddItem from './Pages/AddItem/AddItem';
 import ManageInventories from './Pages/ManageInventories/ManageInventories';
+import CheckOut from './Pages/CheckOut/CheckOut';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
+        <Route path='/checkout/:inventoriesId' element={<CheckOut/>}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/*' element={<Notfound />}></Route>

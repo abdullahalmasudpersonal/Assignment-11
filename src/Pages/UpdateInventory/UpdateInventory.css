@@ -1,0 +1,17 @@
+.updateinventory{
+    height: 1000px;
+}
+
+.addtocart{
+    margin: 20px;
+}
+.addtocart button{
+    width: 200px;
+    border: none;
+    height: 40px;
+    border-radius: 4px;
+    background-color: rgb(247, 207, 156);
+}
+.addtocart button:hover{
+    background-color: rgb(245, 161, 52);
+}

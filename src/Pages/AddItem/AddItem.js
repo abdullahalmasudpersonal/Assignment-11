@@ -1,12 +1,13 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import './AddItem.css';
 
 const AddItem = () => {
     const { register, handleSubmit } = useForm();
     
     const onSubmit = data => {
         console.log(data);
-        const url = `http://localhost:5000/inventories`;
+        const url = `https://tranquil-wave-46370.herokuapp.com/inventories`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -22,7 +23,7 @@ const AddItem = () => {
 
 
     return (
-        <div className='w-50 mx-auto'>
+        <div className='w-50 mx-auto additem mt-5'>
             <h2>Please add item</h2>
             <form className='d-flex flex-column'
             onSubmit={handleSubmit(onSubmit)}>

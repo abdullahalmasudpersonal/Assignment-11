@@ -19,3 +19,13 @@
 .see-more:hover{
     background-color: rgb(221, 142, 22);
 }
+.inven-manag{
+    height: 40px;
+    background-color: rgb(255, 211, 154);
+    border: none;
+}
+.inven-manag:hover{
+    height: 40px;
+    background-color: rgb(255, 175, 69);
+    border: none;
+}
