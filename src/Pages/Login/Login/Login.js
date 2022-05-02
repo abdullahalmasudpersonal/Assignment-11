@@ -49,7 +49,7 @@ const Login = () => {
         const password = passwrodRef.current.value;
 
         await signInWithEmailAndPassword(email, password);
-        const {data} = await axios.post('http://localhost:5000/login', {email});
+        const {data} = await axios.post('https://tranquil-wave-46370.herokuapp.com/login', {email});
         localStorage.setItem('accessToken', data.accessToken);
         navigate(from, { replace: true });
     }
