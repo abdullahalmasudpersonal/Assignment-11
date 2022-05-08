@@ -24,7 +24,7 @@ const ManageInventories = () => {
     }
 
     return (
-        <div className=' w-50 mx-auto manageinventories mt-5'>
+        <div className=' w-50 mx-auto manageinventories mt-5 mb-5'>
             <Link to='/additem'>
                 <h4 className='text-center'> <button>Add new item</button></h4>
             </Link>

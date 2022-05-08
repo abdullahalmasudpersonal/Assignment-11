@@ -37,7 +37,7 @@ const Home = () => {
             </Link>
             <div className='text-center m-5'>
                 <Link to='/manageinventories'>
-                    <button className='rounded w-50 inven-manag fw-bold'>Manage Inventories</button>
+                    <button className='rounded inven-manag fw-bold'>Manage Inventories</button>
                 </Link>
             </div>
             <OurCollection />
