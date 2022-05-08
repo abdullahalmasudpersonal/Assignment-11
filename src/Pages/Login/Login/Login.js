@@ -8,7 +8,8 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import Loading from '../../Shared/Loading/Loading';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
+import useToken from '../../../hooks/UseToken';
+
 
 const Login = () => {
 
@@ -28,13 +29,13 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-
+    const [token] = useToken(user);
     if (loading || sending) {
         return <Loading />
     }
 
-    if (user) {
-       // navigate(from, { replace: true });
+    if (token) {
+        navigate(from, { replace: true });
     }
 
     if (error) {
@@ -49,9 +50,6 @@ const Login = () => {
         const password = passwrodRef.current.value;
 
         await signInWithEmailAndPassword(email, password);
-        const {data} = await axios.post('https://tranquil-wave-46370.herokuapp.com/login', {email});
-        localStorage.setItem('accessToken', data.accessToken);
-        navigate(from, { replace: true });
     }
 
     const resetPassword = async () => {

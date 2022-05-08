@@ -12,7 +12,7 @@ const MyItems = () => {
     useEffect(() => {
 
         const getOrders = async () => {
-            const email = user.email;
+            const email = user?.email;
             const url = `https://tranquil-wave-46370.herokuapp.com/order?email=${email}`;
             try {
                 const { data } = await axiosPrivate.get(url);
@@ -30,8 +30,13 @@ const MyItems = () => {
 
     }, [user])
     return (
-        <div>
+        <div className='container mt-5 mb-5 mx-auto'>
             <h3>My Items: {orders.length}</h3>
+            {
+                orders.map(order => <div key={order._id}>
+                    <p>{order.email} : {order.inventories}</p>
+                </div>)
+            }
         </div>
     );
 };
