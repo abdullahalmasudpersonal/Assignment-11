@@ -20,7 +20,7 @@ const MyItems = () => {
             }
             catch (error) {
                 console.log(error.message);
-                if(error.response.status === 401 || error.response.status === 403){
+                if (error.response.status === 401 || error.response.status === 403) {
                     signOut(auth);
                     navigate('/login')
                 }
@@ -28,13 +28,32 @@ const MyItems = () => {
         }
         getOrders();
 
-    }, [user])
+    }, [user]);
+
+    const handleMyItemDelete = id => {
+        const proceed = window.confirm('Are you sure?')
+        if (proceed) {
+            const url = `https://tranquil-wave-46370.herokuapp.com/order/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+            .then(res =>res.json())
+            .then(data =>{
+                console.log(data);
+                const remaining = orders.filter(order => order._id !== id);
+                setOrders(remaining);
+            })
+        }
+    }
+
+
     return (
         <div className='container mt-5 mb-5 mx-auto'>
             <h3>My Items: {orders.length}</h3>
             {
                 orders.map(order => <div key={order._id}>
-                    <p>{order.email} : {order.inventories}</p>
+                    <h6>{order.email} : {order.inventories} <button onClick={() => handleMyItemDelete(order._id)} className='bg-delete'>Delete</button>
+                    </h6>
                 </div>)
             }
         </div>
