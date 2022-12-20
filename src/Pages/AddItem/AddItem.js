@@ -6,7 +6,6 @@ const AddItem = () => {
     const { register, handleSubmit } = useForm();
     
     const onSubmit = data => {
-        console.log(data);
         const url = `https://tranquil-wave-46370.herokuapp.com/inventories`;
         fetch(url, {
             method: 'POST',

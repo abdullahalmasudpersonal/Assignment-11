@@ -56,20 +56,18 @@ const Register = () => {
                 <form onSubmit={handleRegister}>
                     <input className='register-input' type='text' name='name' placeholder='Enter name' />
                     <input className='register-input' type='email' placeholder='Enter email' name='email' id='' required />
+                    
                     <input className='register-input mb-2 ' type='password' placeholder='Enter password' name='password' id='' required />
 
                     <div className='mb-2 mt-0'>
                         <input onClick={() => setAgree(!agree)}
                             type='checkbox' name='terms' id='terms'></input>
-                        <label htmlFor='terms' className={`ps-2 ${agree ? 'text-primary' : 'text-danger'}`}>
+                        <label htmlFor='terms' className={`ps-2 ${agree ? 'text-primary' : 'text-danger' }`}>
                             Accept terms and conditions
                         </label>
                     </div>
-
                     <input disabled={!agree} className='register-input' type='submit' value='Register' />
                 </form>
-
-
                 <div className=' mx d-flex m-0 justify-content-center'>
                     <hr className='w-25' />
                     <p className='mx-1'>or</p>

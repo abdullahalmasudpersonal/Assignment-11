@@ -32,6 +32,7 @@ const Home = () => {
                     ></Inventory>)
                 }
             </div>
+            
             <Link to='/inventories' className='text-decoration-none'>
                 <button className='see-more'><span className='d-flex justify-content-center align-items-center m-0'>See more</span></button>
             </Link>
